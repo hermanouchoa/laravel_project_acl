@@ -9,7 +9,7 @@
 
                     <div class="card-body">
 
-                        <a class="text-success" href="">&leftarrow; Voltar para a listagem</a>
+                    <a class="text-success" href="{{ route('user.index') }}">&leftarrow; Voltar para a listagem</a>
 
                         @if($errors)
                             @foreach($errors->all() as $error)
@@ -23,8 +23,18 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="name">RECURSO</label>
-                                <input type="text" class="form-control" id="name" placeholder="Insira o RECURSO"
+                                <label for="name">Nome do Usuário</label>
+                                <input type="text" class="form-control" id="name" placeholder="Insira o Nome Complero do Usuário"
+                                       name="name" value="{{ old('name') }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Insira o Nome Complero do Usuário"
+                                       name="email" value="{{ old('email') }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Senha</label>
+                                <input type="password" class="form-control" id="name" placeholder="Insira o Nome Complero do Usuário"
                                        name="name" value="{{ old('name') }}">
                             </div>
 
