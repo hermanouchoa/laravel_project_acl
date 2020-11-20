@@ -19,26 +19,26 @@
                             @endforeach
                         @endif
 
-                        <form action="{{ route('user.store') }}" method="post" class="mt-4" autocomplete="off">
+                        <form action="{{ route('user.update', ['user'=>$user->id]) }}" method="post" class="mt-4" autocomplete="off">
                             @csrf
-
+                            @method('PUT')
                             <div class="form-group">
                                 <label for="name">Nome do Usuário</label>
                                 <input type="text" class="form-control" id="name" placeholder="Insira o Nome Complero do Usuário"
-                                       name="name" value="{{ old('name') }}">
+                                       name="name" value="{{ old('name') ?? $user->name }}">
                             </div>
                             <div class="form-group">
                                 <label for="name">Email</label>
                                 <input type="email" class="form-control" id="email" placeholder="Insira o Nome Complero do Usuário"
-                                       name="email" value="{{ old('email') }}">
+                                       name="email" value="{{ old('email') ?? $user->email }}">
                             </div>
                             <div class="form-group">
                                 <label for="name">Senha</label>
                                 <input type="password" class="form-control" id="password" placeholder="Insira o Nome Complero do Usuário"
-                                       name="password" value="{{ old('password') }}">
+                                       name="password" value="{{ old('password') ?? $user->password }}">
                             </div>
 
-                            <button type="submit" class="btn btn-block btn-success">Cadastrar Novo Usuário</button>
+                            <button type="submit" class="btn btn-block btn-success">Editar Usuário</button>
                         </form>
                     </div>
 

@@ -36,7 +36,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->save();
+        return redirect()->route('user.index');
+        //var_dump($request->all());
     }
 
     /**
@@ -58,7 +64,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::where('id',$id)->first();
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -70,7 +77,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::where('id',$id)->first();
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if(!empty($request->password)) {
+            $user->password = $request->password;
+        }
+
+        $user->save();
+        return redirect()->route('user.index');
+        //var_dump($request->all());
     }
 
     /**
