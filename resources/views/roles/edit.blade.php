@@ -21,7 +21,7 @@
 
                         <form action="{{ route('role.update', ['role'=>$role->id]) }}" method="post" class="mt-4" autocomplete="off">
                             @csrf
-
+                            @method('PUT')
                             <div class="form-group">
                                 <label for="name">Nome do Usuário</label>
                                 <input type="text" class="form-control" id="name" placeholder="Insira o Nome do Perfil"

@@ -20,5 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('user', 'UserController');
+
+Route::get('role/{role}/permissions','RoleController@permissions')->name('role.permissions');
+Route::put('role/{role}/permissions/sync','RoleController@permissionsSync')->name('role.permissionsSync');
 Route::resource('role', 'RoleController');
+
 Route::resource('permission', 'PermissionController');
