@@ -30,6 +30,14 @@ class PostController extends Controller
      */
     public function create()
     {
+        if (!Auth::user()->hasPermissionTo('Cadastrar Artigo')) {
+            throw new UnauthorizedException('403','Não tem permissão de acesso para Cadastrar Artigo');
+        }
+
+        // if (!Auth::user()->hasRole('Administrador')) {
+        //     throw new UnauthorizedException('403','Não tem permissão de acesso para Cadastrar Artigo');
+        // }
+
         return view('posts.create');
     }
 
@@ -41,6 +49,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::user()->hasPermissionTo('Cadastrar Artigo')) {
+            throw new UnauthorizedException('403','Não tem permissão de acesso para Cadastrar Artigo');
+        }
+
         $post = new Post();
         $post->title = $request->title;
         $post->content = $request->content;

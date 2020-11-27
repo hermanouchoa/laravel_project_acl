@@ -30,7 +30,7 @@ Route::resource('role', 'RoleController');
 Route::resource('permission', 'PermissionController');
 
 
-Route::get('/post', 'PostController@index')->name('post.index');
+Route::get('/post', 'PostController@index')->name('post.index')->middleware(['role_or_permission:Listar Artigos']);
 
 Route::get('/post/create', 'PostController@create')->name('post.create');
 Route::post('/post', 'PostController@store')->name('post.store');

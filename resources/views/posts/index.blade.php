@@ -8,8 +8,10 @@
                     <div class="card-header">Dashboard</div>
 
                     <div class="card-body">
-
+                        @can('Cadastrar Artigo')
                         <a class="text-success" href="{{ route('post.create') }}">&plus; Cadastrar Artigo</a>
+                        @endcan
+
 
                         @if($errors)
                             @foreach($errors->all() as $error)
